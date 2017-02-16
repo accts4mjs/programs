@@ -21,7 +21,7 @@ public class MyStrings {
     for (int i=function_data.length()-1; i>=0; i--) {
       reversed_string += function_data.substring(i,i+1);
     }
-
+    debugout.printf(String.format("rvrs: '%s'\n", reversed_string));
     if (function_data.compareTo(reversed_string) == 0) {
       System.out.println("TRUE");
       return 0;

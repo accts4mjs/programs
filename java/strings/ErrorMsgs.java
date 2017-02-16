@@ -12,6 +12,7 @@ public class ErrorMsgs {
   }
   public void printf(String fstr) {
     if (DEBUG_ON) {
+      System.err.printf("DBG: ");
       System.err.printf(fstr);
     }
   }
