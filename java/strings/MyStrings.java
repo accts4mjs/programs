@@ -1,3 +1,4 @@
+import java.io.*;
 
 public class MyStrings {
   public static final int NUM_FUNCS = 1;
@@ -9,15 +10,16 @@ public class MyStrings {
     function_data = data;
   }
   public static void usage(int exit_value) {
-    System.out.printf("usage: MyStrings <1-%i> <data_for_function>\n", NUM_FUNCS);
+    System.out.printf("usage: MyStrings <1-%d> <data_for_function>\n", NUM_FUNCS);
     System.exit(exit_value);
   }
   public int checkPalindrome() {
     String reversed_string = "";
 
     for (int i=function_data.length()-1; i>=0; i--) {
-      reversed_string.concat(Character.toString(function_data.charAt(i)));
+      reversed_string += function_data.substring(i,i+1);
     }
+
     if (function_data.compareTo(reversed_string) == 0) {
       System.out.println("TRUE");
       return 0;
@@ -37,15 +39,12 @@ public class MyStrings {
     }
     return -1;
   }
-  public static int main(String[] args) {
+  public static void main(String[] args) {
     MyStrings mystring = null;
     int func_num;
 
-    if (args[0] == "-h") {
-      usage(1);
-    }
     if (args.length != 2) {
-      System.out.printf("ERROR: wrong # of args.  Expected 2 got %i.\n", args.length);
+      System.out.printf("ERROR: wrong # of args.  Expected 2 got %d.\n", args.length);
       usage(2);
     }
     func_num = Integer.parseInt(args[0]);
@@ -55,6 +54,6 @@ public class MyStrings {
     }
 
     mystring = new MyStrings(func_num, args[1]);
-    return mystring.runFunction();
+    System.exit(mystring.runFunction());
   }
 }
