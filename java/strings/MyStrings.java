@@ -4,10 +4,12 @@ public class MyStrings {
   public static final int NUM_FUNCS = 1;
   private int function_number;
   private String function_data;
+  private ErrorMsgs debugout;
 
   public MyStrings(int num, String data) {
     function_number = num;
     function_data = data;
+    debugout = new ErrorMsgs();
   }
   public static void usage(int exit_value) {
     System.out.printf("usage: MyStrings <1-%d> <data_for_function>\n", NUM_FUNCS);
