@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Arrays;
 
 public class MyStrings {
   public static final int NUM_FUNCS = 3;
@@ -58,11 +59,25 @@ public class MyStrings {
     // Randomly choose a number to remove from the set (just add 1 or sub 1 if 100)
     int position = getRandomRange(0, 100);
 
+    for (int i=0; i<100; i++) {
+      //dbg.printf(String.format("mnia: i: %d v: %d\n", i, array_of_nums[i]));
+    }
     if (array_of_nums[position] < 100) {
       array_of_nums[position] = array_of_nums[position] + 1;
     } else {
       array_of_nums[position] = 99;
     }
+    // Sort and scan the array to find the duplicate (which indicates missing number)
+    Arrays.sort(array_of_nums);
+    for (int i=0; i<100; i++) {
+      // dbg.printf(String.format("mnia: i: %d v: %d\n", i, array_of_nums[i]));
+    }
+    for (int i=0; i<100; i++) {
+      if (array_of_nums[i] != (i+1)) {
+        System.out.printf("Missing Number is: %d\n", i+1);
+      }
+    }
+
 
     return 0;
   }
