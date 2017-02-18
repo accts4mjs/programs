@@ -50,6 +50,11 @@ public class MyStrings {
     return 0;
   }
   public int missingNumberInArray() {
+    // Search an array containing numbers 1-100 and find missing number
+    int array_of_nums[] = {48, 65, 14, 52, 54, 3, 79, 92, 60, 11, 76, 86, 88, 24, 95, 37, 47, 25, 96, 74, 26, 12, 100, 1, 56, 31, 72, 89, 85, 53, 39, 46, 27, 59, 94, 70, 21, 19, 80, 20, 32, 90, 43, 42, 66, 10, 35, 67, 83, 81, 49, 44, 23, 57, 77, 91, 2, 69, 8, 16, 13, 63, 40, 58, 82, 64, 29, 93, 55, 36, 7, 45, 17, 51, 99, 71, 38, 22, 75, 28, 5, 9, 41, 6, 30, 4, 73, 62, 50, 61, 87, 98, 15, 34, 18, 68, 33, 84, 78, 97};
+    // Randomly choose a number to remove from the set (just add 1 or sub 1 if 100)
+    
+
     return 0;
   }
   public int runFunction() {
