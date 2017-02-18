@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class MyStrings {
-  public static final int NUM_FUNCS = 2;
+  public static final int NUM_FUNCS = 3;
   private int function_number;
   private String function_data;
   private ErrorMsgs dbg;
@@ -49,12 +49,17 @@ public class MyStrings {
     }
     return 0;
   }
+  public int missingNumberInArray() {
+    return 0;
+  }
   public int runFunction() {
     switch (function_number) {
       case 1:
         return checkPalindrome();
       case 2:
         return fizBuzz();
+      case 3:
+        return missingNumberInArray();
       default:
         System.out.print("ERROR: Unknown function # ");
         System.out.println(Integer.toString(function_number));
