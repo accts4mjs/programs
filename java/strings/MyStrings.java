@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Arrays;
 
 public class MyStrings {
-  public static final int NUM_FUNCS = 3;
+  public static final int NUM_FUNCS = 4;
   private int function_number;
   private String function_data;
   private ErrorMsgs dbg;
@@ -78,7 +78,9 @@ public class MyStrings {
       }
     }
 
-
+    return 0;
+  }
+  public int insertAndRemoveDoubleList() {
     return 0;
   }
   public int runFunction() {
@@ -89,6 +91,8 @@ public class MyStrings {
         return fizBuzz();
       case 3:
         return missingNumberInArray();
+      case 4:
+        return insertAndRemoveDoubleList();
       default:
         System.out.print("ERROR: Unknown function # ");
         System.out.println(Integer.toString(function_number));
