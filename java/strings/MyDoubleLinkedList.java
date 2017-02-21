@@ -70,12 +70,12 @@ public class MyDoubleLinkedList {
   // Insert an element after position in list.
   // 0 = insert at head
   // n (list size) = insert after tail
-  public MyElement insertElement(int position, int value) {
+  public MyElement insertElementAfter(int position, int value) {
     MyElement current_element;
     MyElement temp_element;
 
     if (position > size_of_list) {
-      System.out.printf("ERROR: MyDoubleLinkedList: insertElement: position '%d' > size_of_list '%d'/n", position, size_of_list);
+      System.out.printf("ERROR: MyDoubleLinkedList: insertElementAfter: position '%d' > size_of_list '%d'/n", position, size_of_list);
       System.exit(-1);
     }
 
@@ -104,7 +104,7 @@ public class MyDoubleLinkedList {
         if (current_element.next != null) {
           current_element = current_element.next;
         } else {
-          System.out.printf("ERROR: MyDoubleLinkedList: insertElement: position '%d'", position);
+          System.out.printf("ERROR: MyDoubleLinkedList: insertElementAfter: position '%d'", position);
           System.out.printf(" is not a valid element (NULL)\n");
           System.exit(-1);
         }
@@ -119,5 +119,70 @@ public class MyDoubleLinkedList {
     // No particular reason to return new element, but do anyway (might want to
     // use it directly at this point)
     return temp_element;
+  }
+
+  public void deleteElement(int position) {
+    MyElement current_element = my_list_head;
+
+    if (position < 1 || position > size_of_list) {
+      System.out.printf("ERROR: MyDoubleLinkedList: deleteElement: ");
+      System.out.printf("position '%d' is invalid.  Valid values 1 - %d\n", position, size_of_list);
+      System.exit(-1);
+    }
+
+    // Deleting head
+    if (position == 1) {
+        // If only one element:
+        if (size_of_list == 1) {
+          my_list_head = null;
+          my_list_tail = null;
+          size_of_list = 0;
+          return;
+        }
+        my_list_head = current_element.next;
+        my_list_head.previous = null;
+        current_element.next = null;
+        size_of_list--;
+        return;
+    }
+
+    // Deleting tail
+    if (position == size_of_list) {
+      // NOTE: Case where tail == head is taken care of above where head is only one element
+      current_element = my_list_tail;
+      my_list_tail = current_element.previous;
+      my_list_tail.next = null;
+      current_element.previous = null;
+      size_of_list--;
+      return;
+    }
+
+    // Deleting an element mid list
+    for (int i=1; i<position; i++) {
+      current_element = current_element.next;
+    }
+    current_element.next.previous = current_element.previous;
+    current_element.previous.next = current_element.next;
+    current_element.previous = null;
+    current_element.next = null;
+    size_of_list--;
+  }
+
+  // Position for reading values is 1 based (starts at 1)
+  public int elementValue(int position) {
+    MyElement current_element = my_list_head;
+
+    if (position < 1 || position > size_of_list) {
+      System.out.printf("ERROR: position '%d' is invalid.  Valid values 1 - %d\n", position, size_of_list);
+      System.exit(-1);
+    }
+    // Shortcut if position is end of list because we already have the tail
+    if (position == size_of_list) {
+      return my_list_tail.value;
+    }
+    for (int i=1; i<position; i++) {
+      current_element = current_element.next;
+    }
+    return current_element.value;
   }
 }
