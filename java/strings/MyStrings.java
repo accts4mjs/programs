@@ -82,7 +82,58 @@ public class MyStrings {
   }
   public int insertAndRemoveDoubleList() {
     // create a double linked list with 3 elements
+    MyDoubleLinkedList my_list = new MyDoubleLinkedList(3);
 
+    // Insert an element in position 2 (after 1st element)
+    my_list.insertElementAfter(1, 42);
+
+    // Check value of each element
+    for (int i=1; i<=my_list.length(); i++) {
+      int current_value = my_list.elementValue(i);
+      // dbg.printf(String.format("Element: '%d' Value: '%d'\n", i, current_value));
+    }
+    // Insert an element at the front of the list
+    my_list.insertElementAfter(0, 17);
+    // Insert an element at the end of the list
+    my_list.insertElementAfter(my_list.length(), 24);
+    // Count of elements should be 6
+    if (my_list.length() != 6) {
+      System.out.printf("ERROR: MyStrings: insertAndRemoveDoubleList: ");
+      System.out.printf(" length should be 6 is '%d'\n", my_list.length());
+      System.exit(-1);
+    }
+    // Delete 3rd element
+    my_list.deleteElement(3);
+    if (my_list.length() != 5) {
+      System.out.printf("ERROR: MyStrings: insertAndRemoveDoubleList: ");
+      System.out.printf(" length should be 5 is '%d'\n", my_list.length());
+      System.exit(-1);
+    }
+    // Delete first element
+    my_list.deleteElement(1);
+    if (my_list.length() != 4) {
+      System.out.printf("ERROR: MyStrings: insertAndRemoveDoubleList: ");
+      System.out.printf(" length should be 4 is '%d'\n", my_list.length());
+      System.exit(-1);
+    }
+    // Delete last element
+    my_list.deleteElement(my_list.length());
+    if (my_list.length() != 3) {
+      System.out.printf("ERROR: MyStrings: insertAndRemoveDoubleList: ");
+      System.out.printf(" length should be 3 is '%d'\n", my_list.length());
+      System.exit(-1);
+    }
+    // Delete rest of list
+/*    for (int i=0; i<3; i++) {
+      my_list.deleteElement(1);
+    }
+    if (my_list.length() != 0) {
+      System.out.printf("ERROR: MyStrings: insertAndRemoveDoubleList: ");
+      System.out.printf(" length should be 0 is '%d'\n", my_list.length());
+      System.exit(-1);
+    }
+*/
+    System.out.printf("MyStrings: insertAndRemoveDoubleList: PASS\n");
     return 0;
   }
   public int runFunction() {

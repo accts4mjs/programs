@@ -66,6 +66,23 @@ public class MyDoubleLinkedList {
   public MyElement last() {
     return my_list_tail;
   }
+  // Position for reading values is 1 based (starts at 1)
+  public int elementValue(int position) {
+    MyElement current_element = my_list_head;
+
+    if (position < 1 || position > size_of_list) {
+      System.out.printf("ERROR: position '%d' is invalid.  Valid values 1 - %d\n", position, size_of_list);
+      System.exit(-1);
+    }
+    // Shortcut if position is end of list because we already have the tail
+    if (position == size_of_list) {
+      return my_list_tail.value;
+    }
+    for (int i=1; i<position; i++) {
+      current_element = current_element.next;
+    }
+    return current_element.value;
+  }
 
   // Insert an element after position in list.
   // 0 = insert at head
@@ -171,23 +188,5 @@ public class MyDoubleLinkedList {
     current_element.previous = null;
     current_element.next = null;
     size_of_list--;
-  }
-
-  // Position for reading values is 1 based (starts at 1)
-  public int elementValue(int position) {
-    MyElement current_element = my_list_head;
-
-    if (position < 1 || position > size_of_list) {
-      System.out.printf("ERROR: position '%d' is invalid.  Valid values 1 - %d\n", position, size_of_list);
-      System.exit(-1);
-    }
-    // Shortcut if position is end of list because we already have the tail
-    if (position == size_of_list) {
-      return my_list_tail.value;
-    }
-    for (int i=1; i<position; i++) {
-      current_element = current_element.next;
-    }
-    return current_element.value;
   }
 }
