@@ -81,7 +81,12 @@ public class MyDoubleLinkedList {
 
     temp_element = new MyElement(value);
 
-    if (position == 0) {
+    if (position == 0 && size_of_list == 0) {
+        // List is currently empty
+        my_list_head = temp_element;
+        my_list_tail = temp_element;
+        size_of_list = 1;
+    } else if (position == 0) {
       // Insert in front of head (prev == NULL)
       current_element = my_list_head;
       current_element.previous = temp_element;
