@@ -81,6 +81,8 @@ public class MyStrings {
     return 0;
   }
   public int insertAndRemoveDoubleList() {
+    // create a double linked list with 3 elements
+
     return 0;
   }
   public int runFunction() {
